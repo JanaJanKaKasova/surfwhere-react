@@ -4,7 +4,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="navbar navbar-light bg-light rounded">
-        <label className="navbar-brand">Surfwhere Weather</label>
+        <span className="navbar-brand">Surfwhere Weather</span>
 
         <form className="form-inline text-right" id="weather__form">
           <button id="weather-refresh" className="btn btn-info mr-sm-2">
