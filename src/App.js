@@ -3,10 +3,24 @@ import React from "react";
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <p>Hello World</p>
-        <h1>YO!</h1>
-        <h2>here is going to be a badass weather app tomorrow</h2>
+      <div className="navbar navbar-light bg-light rounded">
+        <label className="navbar-brand">Surfwhere Weather</label>
+
+        <form className="form-inline text-right" id="weather__form">
+          <button id="weather-refresh" className="btn btn-info mr-sm-2">
+            <i className="fas fa-location-arrow" />
+          </button>
+          <input
+            className="form-control mr-sm-2"
+            id="weather__form-location"
+            type="search"
+            placeholder="Enter a place..."
+            aria-label="Search"
+          />
+          <button className="btn btn-outline-info my-2 my-sm-0" type="submit">
+            <span id="Searchbutton">Search</span>
+          </button>
+        </form>
       </div>
     );
   }
