@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import WeatherApp from "./WeatherApp.js";
 
 class App extends React.Component {
   render() {
