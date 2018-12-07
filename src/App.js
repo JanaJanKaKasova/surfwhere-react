@@ -61,6 +61,187 @@ class App extends React.Component {
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block">
+            <div class="day__block-date" />
+
+            <div class="row-md-3 pt-3">
+              <img class="day__block-image" />
+            </div>
+            <div class="row pt-3 mx-auto">
+              <div class="weather-detail__text" id="weather-description" />
+            </div>
+            <div class="row pt-3 mx-auto day__block-temps">
+              Max: <span class="day__block-temp day__block-temp--max" /> °C
+            </div>
+            <div class="row pt-0 mx-auto day__block-temps">
+              Min: <span class="day__block-temp day__block-temp--min" /> °C
+            </div>
+            <div class="row pt-3 mx-auto">
+              Wind: <span class="wind-speed" /> km/h
+            </div>
+            <div class="row pt-0 mx-auto">
+              Direction: <span class="wind-direction" />°
+            </div>
+            <div class="row pt-3 mx-auto">surf: N/A</div>
+            <div class="row pt-0 mx-auto">swell: N/A</div>
+            <div class="row pt-O mx-auto">direction: N/A</div>
+          </div>
+
+          <div
+            class="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
+            max="16"
+            min="12"
+            conditions="rainy"
+          >
+            <div class="day__block-date" />
+
+            <div class="row-md-3 pt-3">
+              <img class="day__block-image" />
+            </div>
+            <div class="row pt-3 mx-auto">
+              <div class="weather-detail__text" id="weather-description" />
+            </div>
+            <div class="row pt-3 mx-auto day__block-temps">
+              Max: <span class="day__block-temp day__block-temp--max" /> °C
+            </div>
+            <div class="row pt-0 mx-auto day__block-temps">
+              Min: <span class="day__block-temp day__block-temp--min" /> °C
+            </div>
+            <div class="row pt-3 mx-auto">
+              Wind: <span class="wind-speed" /> km/h
+            </div>
+            <div class="row pt-0 mx-auto">
+              Direction: <span class="wind-direction" /> °
+            </div>
+            <div class="row pt-3 mx-auto">surf: N/A</div>
+            <div class="row pt-0 mx-auto">swell: N/A</div>
+            <div class="row pt-O mx-auto">direction: N/A</div>
+          </div>
+
+          <div
+            class="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
+            max="18"
+            min="15"
+            conditions="partly cloudy"
+          >
+            <div class="day__block-date" />
+
+            <div class="row-md-3 pt-3">
+              <img class="day__block-image" />
+            </div>
+            <div class="row pt-3 mx-auto">
+              <div class="weather-detail__text" id="weather-description" />
+            </div>
+            <div class="row pt-3 mx-auto day__block-temps">
+              Max: <span class="day__block-temp day__block-temp--max" /> °C
+            </div>
+            <div class="row pt-0 mx-auto dday__block-temps">
+              Min: <span class="day__block-temp day__block-temp--min" /> °C
+            </div>
+            <div class="row pt-3 mx-auto">
+              Wind: <span class="wind-speed" /> km/h
+            </div>
+            <div class="row pt-0 mx-auto">
+              Direction: <span class="wind-direction" /> °
+            </div>
+            <div class="row pt-3 mx-auto">surf: N/A</div>
+            <div class="row pt-0 mx-auto">swell: N/A</div>
+            <div class="row pt-O mx-auto">direction: N/A</div>
+          </div>
+
+          <div
+            class="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
+            max="20"
+            min="15"
+            conditions="mostly sunny"
+          >
+            <div class="day__block-date" />
+
+            <div class="row-md-3 pt-3">
+              <img class="day__block-image" />
+            </div>
+            <div class="row pt-3 mx-auto">
+              <div class="weather-detail__text" id="weather-description" />
+            </div>
+            <div class="row pt-3 mx-auto day__block-temps">
+              Max: <span class="day__block-temp day__block-temp--max" /> °C
+            </div>
+            <div class="row pt-0 mx-auto day__block-temps">
+              Min: <span class="day__block-temp day__block-temp--min" /> °C
+            </div>
+            <div class="row pt-3 mx-auto">
+              Wind: <span class="wind-speed" /> km/h
+            </div>
+            <div class="row pt-0 mx-auto">
+              Direction: <span class="wind-direction" /> °
+            </div>
+            <div class="row pt-3 mx-auto">surf: N/A</div>
+            <div class="row pt-0 mx-auto">swell: N/A</div>
+            <div class="row pt-O mx-auto">direction: N/A</div>
+          </div>
+          <div
+            class="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
+            max="21"
+            min="17"
+            conditions="sunny"
+          >
+            <div class="day__block-date" />
+
+            <div class="row-md-3 pt-3">
+              <img class="day__block-image" />
+            </div>
+            <div class="row pt-3 mx-auto">
+              <div class="weather-detail__text" id="weather-description" />
+            </div>
+            <div class="row pt-3 mx-auto day__block-temps">
+              Max: <span class="day__block-temp day__block-temp--max" /> °C
+            </div>
+            <div class="row pt-0 mx-auto day__block-temps">
+              Min: <span class="day__block-temp day__block-temp--min" /> °C
+            </div>
+            <div class="row pt-3 mx-auto">
+              Wind: <span class="wind-speed" /> km/h
+            </div>
+            <div class="row pt-0 mx-auto">
+              Direction: <span class="wind-direction" /> °
+            </div>
+            <div class="row pt-3 mx-auto">surf: N/A</div>
+            <div class="row pt-0 mx-auto">swell: N/A</div>
+            <div class="row pt-O mx-auto">direction: N/A</div>
+          </div>
+          <div
+            class="col-md-2 border-top border-bottom pt-3 pb-3 mb-5 day__block"
+            max="18"
+            min="15"
+            conditions="partly cloudy"
+          >
+            <div class="day__block-date" />
+
+            <div class="row-md-3 pt-3">
+              <img class="day__block-image" />
+            </div>
+            <div class="row pt-3 mx-auto">
+              <div class="weather-detail__text" id="weather-description" />
+            </div>
+            <div class="row pt-3 mx-auto day__block-temps">
+              Max: <span class="day__block-temp day__block-temp--max" /> °C
+            </div>
+            <div class="row pt-0 mx-auto day__block-temps">
+              Min: <span class="day__block-temp day__block-temp--min" /> °C
+            </div>
+            <div class="row pt-3 mx-auto">
+              Wind: <span class="wind-speed" /> km/h
+            </div>
+            <div class="row pt-0 mx-auto">
+              Direction: <span class="wind-direction" /> °
+            </div>
+            <div class="row pt-3 mx-auto">surf: N/A</div>
+            <div class="row pt-0 mx-auto">swell: N/A</div>
+            <div class="row pt-O mx-auto">direction: N/A</div>
+          </div>
+        </div>
       </div>
     );
   }
