@@ -6,7 +6,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <SearchNav />
+        <div>
+          <SearchNav />
+        </div>
       </div>
     );
   }
