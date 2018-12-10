@@ -1,16 +1,33 @@
 import React, { Component } from "react";
 import "./App.css";
+import CurrentLocation from "./CurrentLocation";
 
 class SearchNav extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: ""
+    };
+  }
+
+  _handleChange(event) {
+    this.setState({ value: event.target.value });
+  }
+
+  _submit(event) {
+    event.preventDefault();
+    this.props.refresh(this.state.value);
+  }
+
   render() {
     return (
       <div className="navbar navbar-light bg-light rounded">
         <span className="navbar-brand">Surfwhere Weather</span>
 
         <form className="form-inline text-right" id="weather__form">
-          <button id="weather-refresh" className="btn btn-info mr-sm-2">
-            <i className="fas fa-location-arrow" />
-          </button>
+          <CurrentLocation
+            refresh={this.refreshWeatherFromLatitudeAndLongitude}
+          />
           <input
             className="form-control mr-sm-2"
             id="weather__form-location"
