@@ -1,3 +1,9 @@
+.WeatherApp {
+  width: 90%;
+  position: absolute;
+  margin-left: 4rem;
+}
+
 .navbar-brand {
   font-family: "Lobster", cursive;
   font-size: 2rem;
