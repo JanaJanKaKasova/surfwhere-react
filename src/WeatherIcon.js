@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class WeatherIcon extends Component {
+class WeatherIcon extends React.Component {
   render() {
     let imgSrc =
       "http://openweathermap.org/img/w/" + this.props.iconName + ".png";
