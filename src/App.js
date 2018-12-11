@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import "./App.css";
-import WeatherIcon from "./WeatherIcon";
+/* import WeatherIcon from "./WeatherIcon"; */
 import SearchNav from "./SearchNav";
 
 class App extends React.Component {
@@ -110,16 +110,15 @@ class App extends React.Component {
 
               <div className="col-md-1 pt-3">
                 <div className="row-md-3 pt-3">
-                  {/*<WeatherIcon iconName={this.state.conditions.icon} /> */}
+                  {/* <img src="http://openweathermap.org/img/w/"{this.props.iconName}".png" /> */}
                 </div>
               </div>
 
               <div className="col-md-2 pt-3">
                 <div className="row-md-3 pt-3">
                   <div className="clearfix">
-                    {this.state.conditions.temperature}
                     <div className="weather-unit__text weather-unit__text--today">
-                      °C
+                      {this.state.conditions.temperature} °C
                     </div>
                   </div>
                 </div>
@@ -129,13 +128,13 @@ class App extends React.Component {
 
               <div className="col-md-2 pt-3">
                 <div className="row-md-2 pt-4 weather-detail__text">
-                  Precipitation: {this.state.conditions.precipitation} %
+                  Precipitation: {this.state.conditions.precipitation}
                 </div>
                 <div className="row-md-2 pt-0 weather-detail__text">
-                  Wind: {this.state.conditions.wind} km/h
+                  Wind: {this.state.conditions.wind}
                 </div>
                 <div className="row-md-2 pt-0 pb-5 weather-detail__text">
-                  Direction: {this.state.conditions.wind}
+                  Direction:
                 </div>
               </div>
             </div>
