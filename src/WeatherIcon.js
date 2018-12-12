@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 class WeatherIcon extends React.Component {
@@ -9,12 +9,13 @@ class WeatherIcon extends React.Component {
   render() {
     let imgSrc =
       "http://openweathermap.org/img/w/" + this.props.iconName + ".png";
-
-    <img
-      className="weather__icon weather__icon--today"
-      alt="weather icon"
-      src={imgSrc}
-    />;
+    return (
+      <img
+        className="weather__icon weather__icon--today"
+        alt="weather icon"
+        src={imgSrc}
+      />
+    );
   }
 }
 
