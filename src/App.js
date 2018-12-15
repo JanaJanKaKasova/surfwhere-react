@@ -4,6 +4,7 @@ import axios from "axios";
 import "./App.css";
 import WeatherIcon from "./WeatherIcon";
 import SearchNav from "./SearchNav";
+import CurrentLocation from "./CurrentLocation";
 
 class App extends React.Component {
   state = {};
