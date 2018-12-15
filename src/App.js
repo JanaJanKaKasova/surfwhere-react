@@ -40,7 +40,8 @@ class App extends React.Component {
             precipitation: Math.round(response.data.main.humidity) + "%",
             temperature: Math.round(response.data.main.temp),
             time: this.friendlyDate(new Date()),
-            wind: Math.round(response.data.wind.speed) + "km/h"
+            wind: Math.round(response.data.wind.speed) + "km/h",
+            direction: Math.round(response.data.wind.direction) + "°"
           }
         });
       });
@@ -84,7 +85,8 @@ class App extends React.Component {
               precipitation: Math.round(response.data.main.humidity) + "%",
               temperature: Math.round(response.data.main.temp),
               time: this.friendlyDate(new Date()),
-              wind: Math.round(response.data.wind.speed) + "km/h"
+              wind: Math.round(response.data.wind.speed) + "km/h",
+              direction: Math.round(response.data.wind.direction) + "°"
             }
           });
         });
@@ -144,7 +146,7 @@ class App extends React.Component {
                   Wind: {this.state.conditions.wind}
                 </div>
                 <div className="row-md-2 pt-0 pb-5 weather-detail__text">
-                  Direction:
+                  Direction: {this.state.conditions.direction}
                 </div>
               </div>
             </div>
