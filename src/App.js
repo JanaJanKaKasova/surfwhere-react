@@ -93,6 +93,13 @@ class App extends React.Component {
         });
     });
   }
+  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
+    this.refreshWeatherFromParams(`lat=${latitude}&lon=${longitude}`);
+  };
+
+  refresh = city => {
+    this.refreshWeatherFromParams(`q=${city}`);
+  };
 
   render() {
     if (this.state.conditions) {
