@@ -127,7 +127,7 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          <Forecast />
+          <Forecast city={this.state.city} />
         </div>
       );
     } else {
