@@ -6,6 +6,10 @@ class CurrentLocation extends Component {
     refresh: PropTypes.func.isRequired
   };
 
+  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
+    this.refreshWeatherFromParams(`lat=${latitude}&lon=${longitude}`);
+  };
+
   _click(event) {
     navigator.geolocation.getCurrentPosition(position => {
       this.props.refresh(position.coords.latitude, position.coords.longitude);

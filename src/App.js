@@ -2,9 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import "./App.css";
-import WeatherIcon from "./WeatherIcon";
-import SearchNav from "./SearchNav";
-import CurrentLocation from "./CurrentLocation";
+import WeatherIcon from "./WeatherIcon.js";
+import SearchNav from "./SearchNav.js";
+import DateUtil from "./DateUtil";
+import Forecast from "./Forecast";
 
 class App extends React.Component {
   state = {};
@@ -40,7 +41,7 @@ class App extends React.Component {
             icon: response.data.weather[0].icon,
             precipitation: Math.round(response.data.main.humidity) + "%",
             temperature: Math.round(response.data.main.temp),
-            time: this.friendlyDate(new Date()),
+            time: new DateUtil(new Date(response.data.dt * 1000)).dayTime(),
             wind: Math.round(response.data.wind.speed) + "km/h",
             direction: Math.round(response.data.wind.direction) + "°"
           }
@@ -48,7 +49,7 @@ class App extends React.Component {
       });
   }
 
-  friendlyDate(date) {
+  /* friendlyDate(date) {
     let days = [
       "Sunday",
       "Monday",
@@ -62,40 +63,7 @@ class App extends React.Component {
     if (minutes < 10) minutes = "0" + minutes;
 
     return days[date.getDay()] + " " + date.getHours() + ":" + minutes;
-  }
-
-  currentLocation(event) {
-    navigator.geolocation.getCurrentPosition(position => {
-      let apiParams = "appid=" + this.props.apiKey + "&units=metric";
-      axios
-        .get(
-          this.props.apiUrl +
-            "/data/2.5/weather?" +
-            apiParams +
-            "&lat=" +
-            position.coords.latitude +
-            "&lon=" +
-            position.coords.longitude
-        )
-        .then(response => {
-          this.setState({
-            conditions: {
-              city: response.data.name,
-              description: response.data.weather[0].main,
-              icon: response.data.weather[0].icon,
-              precipitation: Math.round(response.data.main.humidity) + "%",
-              temperature: Math.round(response.data.main.temp),
-              time: this.friendlyDate(new Date()),
-              wind: Math.round(response.data.wind.speed) + "km/h",
-              direction: Math.round(response.data.wind.direction) + "°"
-            }
-          });
-        });
-    });
-  }
-  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
-    this.refreshWeatherFromParams(`lat=${latitude}&lon=${longitude}`);
-  };
+  } */
 
   refresh = city => {
     this.refreshWeatherFromParams(`q=${city}`);
@@ -159,217 +127,7 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-
-          {/* <div className="row">
-            <div className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block">
-              <div className="day__block-date" />
-
-              <div className="row-md-3 pt-3">
-                <img className="day__block-image" />
-              </div>
-              <div className="row pt-3 mx-auto">
-                <div
-                  className="weather-detail__text"
-                  id="weather-description"
-                />
-              </div>
-              <div className="row pt-3 mx-auto day__block-temps">
-                Max: <span className="day__block-temp day__block-temp--max" />{" "}
-                °C
-              </div>
-              <div className="row pt-0 mx-auto day__block-temps">
-                Min: <span className="day__block-temp day__block-temp--min" />{" "}
-                °C
-              </div>
-              <div className="row pt-3 mx-auto">
-                Wind: <span className="wind-speed" /> km/h
-              </div>
-              <div className="row pt-0 mx-auto">
-                Direction: <span className="wind-direction" />°
-              </div>
-              <div className="row pt-3 mx-auto">surf: N/A</div>
-              <div className="row pt-0 mx-auto">swell: N/A</div>
-              <div className="row pt-O mx-auto">direction: N/A</div>
-            </div>
-
-            <div
-              className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
-              max="16"
-              min="12"
-              conditions="rainy"
-            >
-              <div className="day__block-date" />
-
-              <div className="row-md-3 pt-3">
-                <img className="day__block-image" />
-              </div>
-              <div className="row pt-3 mx-auto">
-                <div
-                  className="weather-detail__text"
-                  id="weather-description"
-                />
-              </div>
-              <div className="row pt-3 mx-auto day__block-temps">
-                Max: <span className="day__block-temp day__block-temp--max" />{" "}
-                °C
-              </div>
-              <div className="row pt-0 mx-auto day__block-temps">
-                Min: <span className="day__block-temp day__block-temp--min" />{" "}
-                °C
-              </div>
-              <div className="row pt-3 mx-auto">
-                Wind: <span className="wind-speed" /> km/h
-              </div>
-              <div className="row pt-0 mx-auto">
-                Direction: <span className="wind-direction" /> °
-              </div>
-              <div className="row pt-3 mx-auto">surf: N/A</div>
-              <div className="row pt-0 mx-auto">swell: N/A</div>
-              <div className="row pt-O mx-auto">direction: N/A</div>
-            </div>
-
-            <div
-              className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
-              max="18"
-              min="15"
-              conditions="partly cloudy"
-            >
-              <div className="day__block-date" />
-
-              <div className="row-md-3 pt-3">
-                <img className="day__block-image" />
-              </div>
-              <div className="row pt-3 mx-auto">
-                <div
-                  className="weather-detail__text"
-                  id="weather-description"
-                />
-              </div>
-              <div className="row pt-3 mx-auto day__block-temps">
-                Max: <span className="day__block-temp day__block-temp--max" />{" "}
-                °C
-              </div>
-              <div className="row pt-0 mx-auto dday__block-temps">
-                Min: <span className="day__block-temp day__block-temp--min" />{" "}
-                °C
-              </div>
-              <div className="row pt-3 mx-auto">
-                Wind: <span className="wind-speed" /> km/h
-              </div>
-              <div className="row pt-0 mx-auto">
-                Direction: <span className="wind-direction" /> °
-              </div>
-              <div className="row pt-3 mx-auto">surf: N/A</div>
-              <div className="row pt-0 mx-auto">swell: N/A</div>
-              <div className="row pt-O mx-auto">direction: N/A</div>
-            </div>
-
-            <div
-              className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
-              max="20"
-              min="15"
-              conditions="mostly sunny"
-            >
-              <div className="day__block-date" />
-
-              <div className="row-md-3 pt-3">
-                <img className="day__block-image" />
-              </div>
-              <div className="row pt-3 mx-auto">
-                <div
-                  className="weather-detail__text"
-                  id="weather-description"
-                />
-              </div>
-              <div className="row pt-3 mx-auto day__block-temps">
-                Max: <span className="day__block-temp day__block-temp--max" />{" "}
-                °C
-              </div>
-              <div className="row pt-0 mx-auto day__block-temps">
-                Min: <span className="day__block-temp day__block-temp--min" />{" "}
-                °C
-              </div>
-              <div className="row pt-3 mx-auto">
-                Wind: <span className="wind-speed" /> km/h
-              </div>
-              <div className="row pt-0 mx-auto">
-                Direction: <span className="wind-direction" /> °
-              </div>
-              <div className="row pt-3 mx-auto">surf: N/A</div>
-              <div className="row pt-0 mx-auto">swell: N/A</div>
-              <div className="row pt-O mx-auto">direction: N/A</div>
-            </div>
-            <div
-              className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
-              max="21"
-              min="17"
-              conditions="sunny"
-            >
-              <div className="day__block-date" />
-
-              <div className="row-md-3 pt-3">
-                <img className="day__block-image" />
-              </div>
-              <div className="row pt-3 mx-auto">
-                <div
-                  className="weather-detail__text"
-                  id="weather-description"
-                />
-              </div>
-              <div className="row pt-3 mx-auto day__block-temps">
-                Max: <span className="day__block-temp day__block-temp--max" />{" "}
-                °C
-              </div>
-              <div className="row pt-0 mx-auto day__block-temps">
-                Min: <span className="day__block-temp day__block-temp--min" />{" "}
-                °C
-              </div>
-              <div className="row pt-3 mx-auto">
-                Wind: <span className="wind-speed" /> km/h
-              </div>
-              <div className="row pt-0 mx-auto">
-                Direction: <span className="wind-direction" /> °
-              </div>
-              <div className="row pt-3 mx-auto">surf: N/A</div>
-              <div className="row pt-0 mx-auto">swell: N/A</div>
-              <div className="row pt-O mx-auto">direction: N/A</div>
-            </div>
-            <div
-              className="col-md-2 border-top border-bottom pt-3 pb-3 mb-5 day__block"
-              max="18"
-              min="15"
-              conditions="partly cloudy"
-            >
-              <div className="day__block-date" />
-
-              <div className="row-md-3 pt-3">
-                <img className="day__block-image" />
-              </div>
-              <div className="row pt-3 mx-auto">
-                <div
-                  className="weather-detail__text"
-                  id="weather-description"
-                />
-              </div>
-              <div className="row pt-3 mx-auto day__block-temps">
-                Max: <span className="day__block-temp day__block-temp--max" />{" "}
-                °C
-              </div>
-              <div className="row pt-0 mx-auto day__block-temps">
-                Min: <span className="day__block-temp day__block-temp--min" />{" "}
-                °C
-              </div>
-              <div className="row pt-3 mx-auto">
-                Wind: <span className="wind-speed" /> km/h
-              </div>
-              <div className="row pt-0 mx-auto">
-                Direction: <span className="wind-direction" /> °
-              </div>
-              <div className="row pt-3 mx-auto">surf: N/A</div>
-              <div className="row pt-0 mx-auto">swell: N/A</div>
-              <div className="row pt-O mx-auto">direction: N/A</div>
-      </div>
-      </div>*/}
+          <Forecast />
         </div>
       );
     } else {
