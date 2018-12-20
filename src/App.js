@@ -4,8 +4,8 @@ import axios from "axios";
 import "./App.css";
 import WeatherIcon from "./WeatherIcon.js";
 import SearchNav from "./SearchNav.js";
-import DateUtil from "./DateUtil";
-import Forecast from "./Forecast";
+import DateUtil from "./DateUtil.js";
+import Forecast from "./Forecast.js";
 
 class App extends React.Component {
   state = {};
