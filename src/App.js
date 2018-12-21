@@ -5,65 +5,44 @@ import "./App.css";
 import WeatherIcon from "./WeatherIcon.js";
 import SearchNav from "./SearchNav.js";
 import DateUtil from "./DateUtil.js";
+import Api from "./Api";
 import Forecast from "./Forecast.js";
 
 class App extends React.Component {
-  state = {};
-
   static propTypes = {
     city: PropTypes.string.isRequired
   };
 
-  static defaultProps = {
-    city: "lisbon",
-    apiUrl: "https://api.openweathermap.org",
-    apiKey: "029474316bb793be56fc4dee0d85fa00"
+  state = {
+    city: this.props.city
   };
 
-  constructor(props) {
-    super(props);
-
-    let apiParams = "appid=" + this.props.apiKey + "&units=metric";
-
-    axios
-      .get(
-        this.props.apiUrl +
-          "/data/2.5/weather?" +
-          apiParams +
-          "&q=" +
-          this.props.city
-      )
-      .then(response => {
-        this.setState({
-          conditions: {
-            city: response.data.name,
-            description: response.data.weather[0].main,
-            icon: response.data.weather[0].icon,
-            precipitation: Math.round(response.data.main.humidity) + "%",
-            temperature: Math.round(response.data.main.temp),
-            time: new DateUtil(new Date(response.data.dt * 1000)).dayTime(),
-            wind: Math.round(response.data.wind.speed) + "km/h",
-            direction: Math.round(response.data.wind.direction) + "°"
-          }
-        });
-      });
+  componentWillMount() {
+    this.refresh(this.state.city);
   }
 
-  /* friendlyDate(date) {
-    let days = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
-    let minutes = date.getMinutes();
-    if (minutes < 10) minutes = "0" + minutes;
+  refreshWeatherFromParams(params) {
+    let url = `${Api.url}/data/2.5/weather?appid=${
+      Api.key
+    }&units=metric&${params}`;
+    axios.get(url).then(response => {
+      this.setState({
+        city: response.data.name,
+        weather: {
+          description: response.data.weather[0].main,
+          icon: response.data.weather[0].icon,
+          precipitation: Math.round(response.data.main.humidity) + "%",
+          temperature: Math.round(response.data.main.temp),
+          time: new DateUtil(new Date(response.data.dt * 1000)).dayTime(),
+          wind: Math.round(response.data.wind.speed) + "km/h"
+        }
+      });
+    });
+  }
 
-    return days[date.getDay()] + " " + date.getHours() + ":" + minutes;
-  } */
+  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
+    this.refreshWeatherFromParams(`lat=${latitude}&lon=${longitude}`);
+  };
 
   refresh = city => {
     this.refreshWeatherFromParams(`q=${city}`);
