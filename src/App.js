@@ -4,9 +4,6 @@ import axios from "axios";
 import "./App.css";
 import WeatherIcon from "./WeatherIcon.js";
 import SearchNav from "./SearchNav.js";
-import DateUtil from "./DateUtil.js";
-import Api from "./Api";
-import Forecast from "./Forecast.js";
 
 class App extends React.Component {
   state = {};
@@ -42,7 +39,7 @@ class App extends React.Component {
             icon: response.data.weather[0].icon,
             precipitation: Math.round(response.data.main.humidity) + "%",
             temperature: Math.round(response.data.main.temp),
-            time: new DateUtil(new Date(response.data.dt * 1000)).dayTime(),
+            time: this.friendlyDate(new Date()),
             wind: Math.round(response.data.wind.speed) + "km/h",
             direction: Math.round(response.data.wind.direction) + "°"
           }
@@ -50,7 +47,7 @@ class App extends React.Component {
       });
   }
 
-  /* friendlyDate(date) {
+  friendlyDate(date) {
     let days = [
       "Sunday",
       "Monday",
@@ -62,8 +59,9 @@ class App extends React.Component {
     ];
     let minutes = date.getMinutes();
     if (minutes < 10) minutes = "0" + minutes;
+
     return days[date.getDay()] + " " + date.getHours() + ":" + minutes;
-  } */
+  }
 
   refresh = city => {
     this.refreshWeatherFromParams(`q=${city}`);
@@ -127,7 +125,7 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          <Forecast city={this.state.city} />
+          {/* <Forecast city={this.state.city} /> */}
         </div>
       );
     } else {

@@ -6,10 +6,6 @@ class CurrentLocation extends Component {
     refresh: PropTypes.func.isRequired
   };
 
-  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
-    this.refreshWeatherFromParams(`lat=${latitude}&lon=${longitude}`);
-  };
-
   _click(event) {
     navigator.geolocation.getCurrentPosition(position => {
       this.props.refresh(position.coords.latitude, position.coords.longitude);
@@ -18,10 +14,7 @@ class CurrentLocation extends Component {
 
   render() {
     return (
-      <button
-        className="btn btn-info mr-sm-2"
-        onClick={event => this._click(event)}
-      >
+      <button id="weather-refresh" className="btn btn-info mr-sm-2">
         <i className="fas fa-location-arrow" />
       </button>
     );
