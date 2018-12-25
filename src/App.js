@@ -20,31 +20,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-
-    let apiParams = "appid=" + this.props.apiKey + "&units=metric";
-
-    axios
-      .get(
-        this.props.apiUrl +
-          "/data/2.5/weather?" +
-          apiParams +
-          "&q=" +
-          this.props.city
-      )
-      .then(response => {
-        this.setState({
-          conditions: {
-            city: response.data.name,
-            description: response.data.weather[0].main,
-            icon: response.data.weather[0].icon,
-            precipitation: Math.round(response.data.main.humidity) + "%",
-            temperature: Math.round(response.data.main.temp),
-            time: this.friendlyDate(new Date()),
-            wind: Math.round(response.data.wind.speed) + "km/h",
-            direction: Math.round(response.data.wind.direction) + "°"
-          }
-        });
-      });
+    this.refreshWeatherFromCity(this.props.city);
   }
 
   friendlyDate(date) {
@@ -63,8 +39,47 @@ class App extends React.Component {
     return days[date.getDay()] + " " + date.getHours() + ":" + minutes;
   }
 
-  refresh = city => {
-    this.refreshWeatherFromParams(`q=${city}`);
+  refreshWeatherFromUrl(url) {
+    axios.get(url).then(response => {
+      this.setState({
+        conditions: {
+          city: response.data.name,
+          description: response.data.weather[0].main,
+          icon: response.data.weather[0].icon,
+          precipitation: Math.round(response.data.main.humidity) + "%",
+          temperature: Math.round(response.data.main.temp),
+          time: this.friendlyDate(new Date()),
+          wind: Math.round(response.data.wind.speed) + "km/h",
+          direction: Math.round(response.data.wind.direction) + "°"
+        }
+      });
+    });
+  }
+
+  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
+    this.refreshWeatherFromUrl(
+      this.props.apiUrl +
+        "/data/2.5/weather?" +
+        "appid=" +
+        this.props.apiKey +
+        "&units=metric" +
+        "&lat=" +
+        latitude +
+        "&lon=" +
+        longitude
+    );
+  };
+
+  refreshWeatherFromCity = city => {
+    this.refreshWeatherFromUrl(
+      this.props.apiUrl +
+        "/data/2.5/weather?" +
+        "appid=" +
+        this.props.apiKey +
+        "&units=metric" +
+        "&q=" +
+        city
+    );
   };
 
   render() {
@@ -84,7 +99,7 @@ class App extends React.Component {
                 </div>
                 <div className="row-md-2 pt-0 pb-0">
                   <div className="weather-detail__text">
-                    {this.state.conditions.time} (WET)
+                    {this.state.conditions.time}
                   </div>
                 </div>
                 <div className="row-md-2 pt-0 pb-5 lead">
