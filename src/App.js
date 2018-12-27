@@ -4,6 +4,7 @@ import axios from "axios";
 import "./App.css";
 import WeatherIcon from "./WeatherIcon.js";
 import SearchNav from "./SearchNav.js";
+import Forecast from "./Forecast.js";
 
 class App extends React.Component {
   state = {};
@@ -140,7 +141,7 @@ class App extends React.Component {
               </div>
             </div>
           </div>
-          {/* <Forecast city={this.state.city} /> */}
+          <Forecast /* city={this.state.city} */ />
         </div>
       );
     } else {
