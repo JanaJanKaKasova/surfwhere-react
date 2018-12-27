@@ -34,6 +34,7 @@ class SearchNav extends Component {
             type="search"
             placeholder="Enter a place..."
             aria-label="Search"
+            /* value={this.state.value} */
           />
           <button className="btn btn-outline-info my-2 my-sm-0" type="submit">
             <span id="Searchbutton">Search</span>

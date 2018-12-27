@@ -15,7 +15,10 @@ class CurrentLocation extends Component {
   render() {
     return (
       <button id="weather-refresh" className="btn btn-info mr-sm-2">
-        <i className="fas fa-location-arrow" />
+        <i
+          className="fas fa-location-arrow"
+          onClick={event => this._click(event)}
+        />
       </button>
     );
   }
