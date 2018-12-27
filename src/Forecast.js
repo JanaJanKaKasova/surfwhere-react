@@ -14,6 +14,7 @@ class Forecast extends Component {
             </div>
             <div className="row pt-3 mx-auto">
               <div className="weather-detail__text" id="weather-description" />
+              description
             </div>
             <div className="row pt-3 mx-auto day__block-temps">
               Max: <span className="day__block-temp day__block-temp--max" /> °C
@@ -45,6 +46,7 @@ class Forecast extends Component {
             </div>
             <div className="row pt-3 mx-auto">
               <div className="weather-detail__text" id="weather-description" />
+              description
             </div>
             <div className="row pt-3 mx-auto day__block-temps">
               Max: <span className="day__block-temp day__block-temp--max" /> °C
@@ -63,12 +65,7 @@ class Forecast extends Component {
             <div className="row pt-O mx-auto">direction: N/A</div>
           </div>
 
-          <div
-            className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
-            max="18"
-            min="15"
-            conditions="partly cloudy"
-          >
+          <div className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block">
             <div className="day__block-date" />
 
             <div className="row-md-3 pt-3">
@@ -76,6 +73,7 @@ class Forecast extends Component {
             </div>
             <div className="row pt-3 mx-auto">
               <div className="weather-detail__text" id="weather-description" />
+              description
             </div>
             <div className="row pt-3 mx-auto day__block-temps">
               Max: <span className="day__block-temp day__block-temp--max" /> °C
@@ -94,19 +92,14 @@ class Forecast extends Component {
             <div className="row pt-O mx-auto">direction: N/A</div>
           </div>
 
-          <div
-            className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
-            max="20"
-            min="15"
-            conditions="mostly sunny"
-          >
+          <div className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block">
             <div className="day__block-date" />
-
             <div className="row-md-3 pt-3">
               <img className="day__block-image" alt="" />
             </div>
             <div className="row pt-3 mx-auto">
               <div className="weather-detail__text" id="weather-description" />
+              description
             </div>
             <div className="row pt-3 mx-auto day__block-temps">
               Max: <span className="day__block-temp day__block-temp--max" /> °C
@@ -124,12 +117,7 @@ class Forecast extends Component {
             <div className="row pt-0 mx-auto">swell: N/A</div>
             <div className="row pt-O mx-auto">direction: N/A</div>
           </div>
-          <div
-            className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block"
-            max="21"
-            min="17"
-            conditions="sunny"
-          >
+          <div className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block">
             <div className="day__block-date" />
 
             <div className="row-md-3 pt-3">
@@ -137,6 +125,7 @@ class Forecast extends Component {
             </div>
             <div className="row pt-3 mx-auto">
               <div className="weather-detail__text" id="weather-description" />
+              description
             </div>
             <div className="row pt-3 mx-auto day__block-temps">
               Max: <span className="day__block-temp day__block-temp--max" /> °C
@@ -154,12 +143,7 @@ class Forecast extends Component {
             <div className="row pt-0 mx-auto">swell: N/A</div>
             <div className="row pt-O mx-auto">direction: N/A</div>
           </div>
-          <div
-            className="col-md-2 border-top border-bottom pt-3 pb-3 mb-5 day__block"
-            max="18"
-            min="15"
-            conditions="partly cloudy"
-          >
+          <div className="col-md-2 border-top border-bottom pt-3 pb-3 mb-5 day__block">
             <div className="day__block-date" />
 
             <div className="row-md-3 pt-3">
@@ -167,6 +151,7 @@ class Forecast extends Component {
             </div>
             <div className="row pt-3 mx-auto">
               <div className="weather-detail__text" id="weather-description" />
+              description
             </div>
             <div className="row pt-3 mx-auto day__block-temps">
               Max: <span className="day__block-temp day__block-temp--max" /> °C
