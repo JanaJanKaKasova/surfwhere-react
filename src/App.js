@@ -7,12 +7,10 @@ import SearchNav from "./SearchNav.js";
 import Forecast from "./Forecast.js";
 
 class App extends React.Component {
+  state = {};
+
   static propTypes = {
     city: PropTypes.string.isRequired
-  };
-
-  state = {
-    city: this.props.city
   };
 
   static defaultProps = {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class CurrentLocation extends Component {
+export default class CurrentLocation extends Component {
   static propTypes = {
     refresh: PropTypes.func.isRequired
   };
@@ -23,5 +23,3 @@ class CurrentLocation extends Component {
     );
   }
 }
-
-export default CurrentLocation;
