@@ -6,24 +6,13 @@ class CurrentLocation extends Component {
     refresh: PropTypes.func.isRequired
   };
 
-  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
-    this.refreshWeatherFromUrl(
-      this.props.apiUrl +
-        "/data/2.5/weather?" +
-        "appid=" +
-        this.props.apiKey +
-        "&units=metric" +
-        "&lat=" +
-        latitude +
-        "&lon=" +
-        longitude
-    );
-  };
-
   _click(event) {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.props.refresh(position.coords.latitude, position.coords.longitude);
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position);
     });
+    /* (position => {
+      this.props.refresh(position.coords.latitude, position.coords.longitude);
+    });*/
   }
 
   render() {

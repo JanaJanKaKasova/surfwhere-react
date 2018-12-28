@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import WeatherIcon from "./WeatherIcon.js";
+//import WeatherIcon from "./WeatherIcon.js";
 
 class Forecast extends Component {
   render() {
@@ -8,10 +8,9 @@ class Forecast extends Component {
         <div className="row">
           <div className="col-md-2 border-right border-top border-bottom pt-3 pb-3 mb-5 day__block">
             <div className="day__block-date" />
+            <img alt="" />
 
-            <div className="row-md-3 pt-3">
-              <img className="day__block-image" alt="" />
-            </div>
+            <div className="row-md-3 pt-3" />
             <div className="row pt-3 mx-auto">
               <div className="weather-detail__text" id="weather-description" />
               description
