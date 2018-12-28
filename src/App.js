@@ -59,6 +59,20 @@ class App extends React.Component {
     });
   }
 
+  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
+    this.refreshWeatherFromUrl(
+      this.props.apiUrl +
+        "/data/2.5/weather?" +
+        "appid=" +
+        this.props.apiKey +
+        "&units=metric" +
+        "&lat=" +
+        latitude +
+        "&lon=" +
+        longitude
+    );
+  };
+
   refreshWeatherFromCity = city => {
     this.refreshWeatherFromUrl(
       this.props.apiUrl +
