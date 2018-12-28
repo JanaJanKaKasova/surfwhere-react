@@ -10,6 +10,20 @@ class SearchNav extends Component {
     };
   }
 
+  refreshWeatherFromLatitudeAndLongitude = (latitude, longitude) => {
+    this.refreshWeatherFromUrl(
+      this.props.apiUrl +
+        "/data/2.5/weather?" +
+        "appid=" +
+        this.props.apiKey +
+        "&units=metric" +
+        "&lat=" +
+        latitude +
+        "&lon=" +
+        longitude
+    );
+  };
+
   _handleChange(event) {
     this.setState({ value: event.target.value });
   }
