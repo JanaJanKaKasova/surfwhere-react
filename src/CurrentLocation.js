@@ -7,12 +7,9 @@ class CurrentLocation extends Component {
   };
 
   _click(event) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      console.log(position);
-    });
-    /* (position => {
+    navigator.geolocation.getCurrentPosition(position => {
       this.props.refresh(position.coords.latitude, position.coords.longitude);
-    });*/
+    });
   }
 
   render() {
