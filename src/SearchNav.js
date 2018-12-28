@@ -53,12 +53,12 @@ class SearchNav extends Component {
           />
           <input
             className="form-control mr-sm-2"
-            type="search"
+            type="text"
             placeholder="Enter a place..."
             autoFocus="on"
             autoComplete="off"
-            // onChange={event => this._handleChange(event)}
-            // value={this.state.value}
+            //onChange={event => this._handleChange(event)}
+            //value={this.state.value}
           />
           <button className="btn btn-outline-info my-2 my-sm-0" type="submit">
             <span id="Searchbutton">Search</span>
