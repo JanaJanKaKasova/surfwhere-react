@@ -21,7 +21,16 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.refreshWeatherFromCity(this.props.city);
+    //this.refreshWeatherFromCity(this.props.city);
+    this.refreshWeatherFromUrl(
+      this.props.apiUrl +
+        "/data/2.5/weather?" +
+        "appid=" +
+        this.props.apiKey +
+        "&units=metric" +
+        "&q=" +
+        this.props.city
+    );
   }
 
   friendlyDate(date) {
@@ -40,6 +49,10 @@ class App extends React.Component {
     return days[date.getDay()] + " " + date.getHours() + ":" + minutes;
   }
 
+  /* weekDays(date) {
+    return date.getDay();
+  } */
+
   refreshWeatherFromUrl(url) {
     axios.get(url).then(response => {
       this.setState({
@@ -51,7 +64,9 @@ class App extends React.Component {
           temperature: Math.round(response.data.main.temp),
           time: this.friendlyDate(new Date()),
           wind: Math.round(response.data.wind.speed) + "km/h",
-          direction: Math.round(response.data.wind.direction) + "°"
+          direction: Math.round(response.data.wind.direction) + "°",
+          max: Math.round(response.data.main.temp_max),
+          min: Math.round(response.data.main.temp_min)
         }
       });
     });
